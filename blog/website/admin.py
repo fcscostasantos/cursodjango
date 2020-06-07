@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Contact
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -8,6 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     #fields = ('title', 'sub_title')
 
     def get_queryset(self, request):
-        return Post.object.filter(approved=True)
+        return Post.objects.filter(approved=True)
 
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
+admin.site.register(Contact)
